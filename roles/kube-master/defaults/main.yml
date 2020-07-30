@@ -5,7 +5,7 @@ ETCD_ENDPOINTS: "{{ TMP_ENDPOINTS.rstrip(',') }}"
 CLUSTER_KUBERNETES_SVC_IP: "{{ SERVICE_CIDR | ipaddr('net') | ipaddr(1) | ipaddr('address') }}"
 # k8s 集群 master 节点证书配置，可以添加多个ip和域名（比如增加公网ip和域名）
 MASTER_CERT_HOSTS:
-  - "k8s.deepmap.lo"
+  - "k8s.deepmap.io"
   #- "61.182.11.41"
   #- "www.test.com"
 
