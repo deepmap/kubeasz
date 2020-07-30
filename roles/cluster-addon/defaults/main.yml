@@ -30,12 +30,12 @@ metricsscraper_offline: "metrics-scraper_{{ dashboardMetricsScraperVer }}.tar"
 #ingress_install: "no"
 
 # metallb 自动安装
-# metallb_install: "false"
-# metallbVer: "v0.9.3"
+metallb_install: "yes"
+metallbVer: "v0.9.3"
 # 模式选择: 二层 "layer2" 或者三层 "bgp"
-# metallb_protocol: "layer2"
-# metallb_offline: "metallb_{{ metallbVer }}.tar"
-# metallb_vip_pool: "192.168.122.240/29"
+metallb_protocol: "layer2"
+metallb_offline: "metallb_{{ metallbVer }}.tar"
+metallb_vip_pool: "10.12.1.240/29"
 
 # efk 自动安装
 #efk_install: "no"
