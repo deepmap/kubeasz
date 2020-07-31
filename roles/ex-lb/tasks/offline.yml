@@ -2,16 +2,16 @@
 - name: 准备离线安装包目录
   file: name=/opt/kube/packages/haproxy state=directory
 
-- name: 创建haproxy group
-  group:
-    name: haproxy
+# - name: 创建haproxy group
+#   group:
+#     name: haproxy
 
-- name: 创建haproxy user
-  user:
-    name: haproxy
-    group: haproxy
-    password: '!'
-    create_home: false
+# - name: 创建haproxy user
+#   user:
+#     name: haproxy
+#     group: haproxy
+#     password: '!'
+#     create_home: false
 
 - block:
   - name: 分发 haproxy_xenial 离线包
@@ -21,7 +21,7 @@
 
   - name: 安装 haproxy_xenial 离线包
     shell: 'cd /opt/kube/packages/haproxy && tar zxf haproxy_xenial.tar.gz && \
-           dpkg -i *.deb > /tmp/install_haproxy.log 2>&1'
+           dpkg --force-confdef --force-confold -i *.deb > /tmp/install_haproxy.log 2>&1'
   when: ansible_distribution_release == "xenial"
   ignore_errors: true
 
@@ -33,7 +33,7 @@
 
   - name: 安装 haproxy_bionic 离线包
     shell: 'cd /opt/kube/packages/haproxy && tar zxf haproxy_bionic.tar.gz && \
-           dpkg -i *.deb > /tmp/install_haproxy.log 2>&1'
+           dpkg --force-confdef --force-confold -i *.deb > /tmp/install_haproxy.log 2>&1'
   when: ansible_distribution_release == "bionic"
   ignore_errors: true
 
